@@ -12,7 +12,7 @@ import {
 } from "./components/RubiksCube/Cube/RotateButton"
 
 const CUBE_SIZE = 54
-const CUBE_ALLOWED_REGEX = /^[A-Za-z0-9']{0,56}$/
+const CUBE_ALLOWED_REGEX = /^[A-Za-z0-9]{0,54}$/
 const CENTER_PIECES_REGEX = /(\w?){5}(\w?){9}?(\w?){9}?(\w?){9}?(\w?){9}?(\w?){9}?/
 const CUBE_CHARSET = "frbludFRBLUD"
 const CUBE_SOLVED = '000000000111111111222222222333333333444444444555555555'
@@ -91,7 +91,7 @@ export default function App() {
 
   // Return a cube to default values
   const resetCube = () => {
-    setCube('000000000111111111222222222333333333444444444555555555')
+    setCube(CUBE_SOLVED)
   }
 
   // Return a cube to default values
@@ -104,6 +104,7 @@ export default function App() {
   // Receive or request cube state on load (TODO: Currently it just sets the cube to default values)
   useEffect(() => {
     resetCube()
+    setCubeList([CUBE_SOLVED])
   }, []);
 
   return (
@@ -152,29 +153,104 @@ export default function App() {
         </div>
       </div>
 
-      {/* Cube Visualizer */}
-      <div className="cubePresentation w-[812px] m-auto mt-12">
-        {typeof cubeState !== 'undefined' &&
-            <Cube state={cubeState} presentation={cubePresentation}/>
-        }
-      </div>
-
       {/* Controls Section */}
-      <div className="border p-2 w-[500px] m-auto mt-16 border-stone-500 border rounded-md">
-        <div className="grid grid-cols-6 gap-4 place-content-evenly">
-          <RotateButton command={"F"} color={0} rotateHandler={rotate}/>
-          <RotateButton command={"R"} color={1} rotateHandler={rotate}/>
-          <RotateButton command={"B"} color={2} rotateHandler={rotate}/>
-          <RotateButton command={"L"} color={3} rotateHandler={rotate}/>
-          <RotateButton command={"U"} color={4} rotateHandler={rotate}/>
-          <RotateButton command={"D"} color={5} rotateHandler={rotate}/>
-          <RotateButton command={"f"} color={0} rotateHandler={rotate}/>
-          <RotateButton command={"r"} color={1} rotateHandler={rotate}/>
-          <RotateButton command={"b"} color={2} rotateHandler={rotate}/>
-          <RotateButton command={"l"} color={3} rotateHandler={rotate}/>
-          <RotateButton command={"u"} color={4} rotateHandler={rotate}/>
-          <RotateButton command={"d"} color={5} rotateHandler={rotate}/>
+      <div className="p-2 w-[1100px] m-auto mt-16">
+        <div className="grid grid-cols-12 gap-4 place-content-evenly">
+          <div className="col-span-1 row-span-1 pl-4">
+            <svg
+              className="h-12 w-12 text-blue-500"
+              width="24"
+              height="24"
+              viewBox="-2 -2 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round">
+              <path
+                stroke="none"
+                d="M0 0h24v24H0z"/>
+              <path
+                d="M15 4.55a8 8 0 0 0 -6 14.9m0 -4.45v5h-5"/>
+              <path
+                d="M13 19.95a8 8 0 0 0 5.3 -12.8"
+                strokeDasharray=".001 4.13"/>
+            </svg>
+            <RotateButton command={"f"} color={0} rotateHandler={rotate}/>
+            <RotateButton command={"r"} color={1} rotateHandler={rotate}/>
+            <RotateButton command={"b"} color={2} rotateHandler={rotate}/>
+            <RotateButton command={"l"} color={3} rotateHandler={rotate}/>
+            <RotateButton command={"u"} color={4} rotateHandler={rotate}/>
+            <RotateButton command={"d"} color={5} rotateHandler={rotate}/>
+          </div>
+          <div className="col-span-10 row-span-2">
+            {/* Cube Visualizer */}
+            <div className="cubePresentation w-[812px] m-auto mt-12">
+              {typeof cubeState !== 'undefined' &&
+                  <Cube state={cubeState} presentation={cubePresentation}/>
+              }
+            </div>
+          </div>
+          <div className="col-span-1 row-span-2 pl-4">
+            <svg
+              className="h-12 w-12 text-blue-500"
+              width="24"
+              height="24"
+              viewBox="-2 -2 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round">
+              <path
+                stroke="none"
+                d="M0 0h24v24H0z"/>
+              <path
+                d="M9 4.55a8 8 0 0 1 6 14.9m0 -4.45v5h5"/>
+              <path
+                d="M11 19.95a8 8 0 0 1 -5.3 -12.8"
+                strokeDasharray=".001 4.13"/>
+            </svg>
+            <RotateButton command={"F"} color={0} rotateHandler={rotate}/>
+            <RotateButton command={"R"} color={1} rotateHandler={rotate}/>
+            <RotateButton command={"B"} color={2} rotateHandler={rotate}/>
+            <RotateButton command={"L"} color={3} rotateHandler={rotate}/>
+            <RotateButton command={"U"} color={4} rotateHandler={rotate}/>
+            <RotateButton command={"D"} color={5} rotateHandler={rotate}/>
+          </div>
         </div>
+      </div>
+      <div className="border p-2 w-[520px] m-auto mt-16 border-stone-500 border rounded-md">
+        <p className="font-medium text-base text-sky-600 pb-2 text-center">
+          Move List
+        </p>
+
+        {/* List of moves */}
+        <div className="pl-6 pb-3">
+          <select
+            className="border rounded-sm border-stone-500 text-sm"
+            multiple
+            onChange={(e) => setCube(e.currentTarget.selectedOptions[0].text)}
+          >
+            {cubeList.map((cube: string, i) => {
+              return (
+                <option
+                  key={i}
+                  value={i}>{cube}
+                </option>
+              );
+            })
+            }
+          </select>
+        </div>
+
+        <hr/>
+        <textarea
+          className="border-stone-600 border-2 rounded p-2 m-2 mb-0 w-[485px] text-center caret-blue-500"
+          rows={5}
+          placeholder={"Paste in a list of cube strings separated by commas (no spaces), then use the arrow keys to navigate through the list of moves. \n\nClick away from the box to set the list of moves."}
+          onBlur={(e) => setList(e.target.value)}
+        />
       </div>
     </div>
   )

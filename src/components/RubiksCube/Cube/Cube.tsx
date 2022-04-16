@@ -41,13 +41,13 @@ const CubeDefault = (props: Props) => {
   return (
     <div className="grid grid-cols-24 gap-1">
       {/* Central Cube View */}
-      <div className="col-start-7 col-span-6 origin-bottom -skew-x-[45deg] scale-y-[49%]">
+      <div className="col-start-9 col-span-6 origin-bottom -skew-x-[45deg] scale-y-[49%]">
         <CubeFace face={Face.Up} values={props.state[Face.Up]}/>
       </div>
-      <div className="col-start-7 col-span-6">
+      <div className="col-start-9 col-span-6">
         <CubeFace face={Face.Front} values={props.state[Face.Front]}/>
       </div>
-      <div className="col-start-13 col-span-3 origin-left -skew-y-[45deg] scale-x-[49%]">
+      <div className="col-start-15 col-span-3 origin-left -skew-y-[45deg] scale-x-[49%]">
         <CubeFace face={Face.Right} values={props.state[Face.Right]}/>
       </div>
     </div>
@@ -59,26 +59,26 @@ const CubeHalfUnfolded = (props: Props) => {
   return (
     <div className="grid grid-cols-24 gap-1">
       {/* Top Row*/}
-      <div className="col-start-7 col-span-6 origin-bottom -skew-x-[45deg] scale-y-[49%]">
+      <div className="col-start-9 col-span-6 origin-bottom -skew-x-[45deg] scale-y-[49%]">
         <CubeFace face={Face.Up} values={props.state[Face.Up]}/>
       </div>
 
       {/* Middle Row */}
-      <div className="col-start-1 col-span-6">
+      <div className="col-start-3 col-span-6">
         <CubeFace face={Face.Left} values={props.state[Face.Left]}/>
       </div>
-      <div className="col-start-7 col-span-6">
+      <div className="col-start-9 col-span-6">
         <CubeFace face={Face.Front} values={props.state[Face.Front]}/>
       </div>
-      <div className="col-start-13 col-span-3 origin-left -skew-y-[45deg] scale-x-[49%]">
+      <div className="col-start-15 col-span-3 origin-left -skew-y-[45deg] scale-x-[49%]">
         <CubeFace face={Face.Right} values={props.state[Face.Right]}/>
       </div>
-      <div className="col-start-16 col-span-6 -translate-y-[98px]">
+      <div className="col-start-18 col-span-6 -translate-y-[98px]">
         <CubeFace face={Face.Back} values={props.state[Face.Back]}/>
       </div>
 
       {/* Bottom Row */}
-      <div className="col-start-7 col-span-6">
+      <div className="col-start-9 col-span-6">
         <CubeFace face={Face.Down} values={props.state[Face.Down]}/>
       </div>
     </div>
