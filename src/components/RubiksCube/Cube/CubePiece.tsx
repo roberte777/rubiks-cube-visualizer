@@ -7,7 +7,7 @@ const COLORS = [
   'bg-red-500'
 ]
 
-const COLOR_GRADIENTS = [
+export const COLOR_GRADIENTS = [
   'from-zinc-50 to-zinc-200',
   'from-cyan-400 to-cyan-500',
   'from-yellow-400 to-yellow-500',

@@ -7,6 +7,9 @@ import {
   Presentation,
   State
 } from "./components/RubiksCube/Cube/Cube";
+import {
+  RotateButton
+} from "./components/RubiksCube/Cube/RotateButton"
 
 const CUBE_SIZE = 54
 const CUBE_ALLOWED_REGEX = /^[A-Za-z0-9']{0,56}$/
@@ -71,8 +74,7 @@ export default function App() {
 
   const setList = (inputCubeString: string) => {
     setCubeList([])
-    let vals = inputCubeString.split(',')
-    setCubeList(vals)
+    setCubeList(inputCubeString.split(','))
   }
 
   // Set the cube to a random solveable state
@@ -85,12 +87,18 @@ export default function App() {
     fetch(`https://cad0087-rubik.mybluemix.net/api?op=solve&cube=${CUBE_SOLVED}&rotate=${rotations}`)
       .then(response => response.json())
       .then(data => setCube(data.cube));
-
   }
 
   // Return a cube to default values
   const resetCube = () => {
     setCube('000000000111111111222222222333333333444444444555555555')
+  }
+
+  // Return a cube to default values
+  const rotate = (rotation: string) => {
+    fetch(`https://cad0087-rubik.mybluemix.net/api?op=solve&cube=${cubeString}&rotate=${rotation}`)
+      .then(response => response.json())
+      .then(data => setCube(data.cube));
   }
 
   // Receive or request cube state on load (TODO: Currently it just sets the cube to default values)
@@ -100,6 +108,7 @@ export default function App() {
 
   return (
     <div className="App">
+      {/* Parameters Bar */}
       <div className="parameters w-screen flex justify-center">
         <div className="parameters-bar w-auto">
           <input
@@ -142,12 +151,31 @@ export default function App() {
 
         </div>
       </div>
+
+      {/* Cube Visualizer */}
       <div className="cubePresentation w-[812px] m-auto mt-12">
         {typeof cubeState !== 'undefined' &&
             <Cube state={cubeState} presentation={cubePresentation}/>
         }
       </div>
+
+      {/* Controls Section */}
+      <div className="border p-2 w-[500px] m-auto mt-16 border-stone-500 border rounded-md">
+        <div className="grid grid-cols-6 gap-4 place-content-evenly">
+          <RotateButton command={"F"} color={0} rotateHandler={rotate}/>
+          <RotateButton command={"R"} color={1} rotateHandler={rotate}/>
+          <RotateButton command={"B"} color={2} rotateHandler={rotate}/>
+          <RotateButton command={"L"} color={3} rotateHandler={rotate}/>
+          <RotateButton command={"U"} color={4} rotateHandler={rotate}/>
+          <RotateButton command={"D"} color={5} rotateHandler={rotate}/>
+          <RotateButton command={"f"} color={0} rotateHandler={rotate}/>
+          <RotateButton command={"r"} color={1} rotateHandler={rotate}/>
+          <RotateButton command={"b"} color={2} rotateHandler={rotate}/>
+          <RotateButton command={"l"} color={3} rotateHandler={rotate}/>
+          <RotateButton command={"u"} color={4} rotateHandler={rotate}/>
+          <RotateButton command={"d"} color={5} rotateHandler={rotate}/>
+        </div>
+      </div>
     </div>
   )
 }
-
