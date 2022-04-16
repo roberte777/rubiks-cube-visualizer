@@ -2,7 +2,7 @@
   "name": "rubiks-cube-visualizer",
   "author": "Carlos Domani",
   "description": "Frontend for a 3x3 Rubik's Cube Solver",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -21,6 +21,5 @@
     "tailwindcss": "^3.0.18",
     "typescript": "^4.4.4",
     "vite": "^2.7.2"
-  },
-  "packageManager": "yarn@3.2.0"
+  }
 }
