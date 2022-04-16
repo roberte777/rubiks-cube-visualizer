@@ -1,6 +1,8 @@
+!.yarn/cache
+!.yarn/releases
 .yarn
 node_modules
-.pnp*
+.pnp.loader.mjs
 .idea
 .yarnrc.yml
 .run
