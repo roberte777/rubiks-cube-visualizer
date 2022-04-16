@@ -4,6 +4,5 @@
 node_modules
 .pnp.loader.mjs
 .idea
-.yarnrc.yml
 .run
 dist
