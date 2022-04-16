@@ -5,4 +5,3 @@ node_modules
 .pnp.loader.mjs
 .idea
 .run
-dist
