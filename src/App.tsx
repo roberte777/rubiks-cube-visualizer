@@ -82,7 +82,7 @@ export default function App() {
       rotations += CUBE_CHARSET[Math.floor(Math.random() * CUBE_CHARSET.length)];
     }
 
-    fetch(`api?op=solve&cube=${CUBE_SOLVED}&rotate=${rotations}`)
+    fetch(`https://cad0087-rubik.mybluemix.net/api?op=solve&cube=${CUBE_SOLVED}&rotate=${rotations}`)
       .then(response => response.json())
       .then(data => setCube(data.cube));
 
