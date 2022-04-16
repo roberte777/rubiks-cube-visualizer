@@ -419,7 +419,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^17":
+"@types/react@npm:^17, @types/react@npm:^17.0.10":
   version: 17.0.44
   resolution: "@types/react@npm:17.0.44"
   dependencies:
@@ -427,17 +427,6 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: ebee02778ca08f954c316dc907802264e0121c87b8fa2e7e0156ab0ef2a1b0a09d968c016a3600ec4c9a17dc09b4274f292d9b15a1a5369bb7e4072def82808f
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:^18.0.5":
-  version: 18.0.5
-  resolution: "@types/react@npm:18.0.5"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": "*"
-    csstype: ^3.0.2
-  checksum: 70d3336d43ef25509fa89ef3278f57fdf1945fc921e69b7890a78ab9a52a55ee38e2f13aa71eb4f6032b7311e7557860ce8836c1acf3028304989571c9736a96
   languageName: node
   linkType: hard
 
@@ -2020,7 +2009,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "rubiks-cube-visualizer@workspace:."
   dependencies:
-    "@types/react": ^18.0.5
+    "@types/react": ^17.0.10
     "@types/react-dom": ^17.0.10
     "@vitejs/plugin-react": ^1.0.7
     autoprefixer: ^10.4.2
