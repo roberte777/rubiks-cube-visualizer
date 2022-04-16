@@ -226,9 +226,9 @@ export default function App() {
         </p>
 
         {/* List of moves */}
-        <div className="pl-6 pb-3">
+        <div className="pl-7 pb-3">
           <select
-            className="border rounded-sm border-stone-500 text-sm"
+            className="border rounded-sm border-stone-500 text-sm overflow-hidden p-2"
             multiple
             onChange={(e) => setCube(e.currentTarget.selectedOptions[0].text)}
           >
@@ -246,7 +246,7 @@ export default function App() {
 
         <hr/>
         <textarea
-          className="border-stone-600 border-2 rounded p-2 m-2 mb-0 w-[485px] text-center caret-blue-500"
+          className="border-stone-600 border-2 rounded p-2 m-2 mb-0 mt-3 w-[485px] text-center caret-blue-500"
           rows={5}
           placeholder={"Paste in a list of cube strings separated by commas (no spaces), then use the arrow keys to navigate through the list of moves. \n\nClick away from the box to set the list of moves."}
           onBlur={(e) => setList(e.target.value)}
